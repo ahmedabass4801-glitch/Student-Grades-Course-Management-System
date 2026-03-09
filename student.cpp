@@ -65,16 +65,20 @@ Student* find_Student_By_Id(vector<Student>& students, const string& id)
 		if (id == students[i].id) {
 			cout << "student found! print report?\n";
 			do {
-				cout << "1. print report\n2. close";
+				cout << "1. print report\n2. close\n";
 				choose = get_int_input("");
 				if (choose == 1) {
 					cout << "Student name : " << students[i].name << endl;
 					cout << "Student id : " << students[i].id << endl;
 					cout << "Student year : " << students[i].year << endl;
 					cout << "Student course count : " << students[i].course_id.size() << endl;
-					cout << "Student courses :\n";
-					for (size_t j = 0; j < students[i].course_id.size(); j++) {
-						cout << "course #" << j + 1 <<  " " << students[i].course_id[j] << endl;
+					if (students[i].course_id.size() == 0)
+						cout << "student didnt join courses yet!\n";
+					else {
+						cout << "Student courses :\n";
+						for (size_t j = 0; j < students[i].course_id.size(); j++) {
+							cout << "course #" << j + 1 <<  " " << students[i].course_id[j] << endl;
+						}
 					}
 				}
 				else if (choose == 2)
