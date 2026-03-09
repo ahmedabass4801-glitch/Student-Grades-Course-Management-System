@@ -81,8 +81,31 @@ Course* find_course_by_id(vector<Course>& courses, const string& id, vector<Stud
 			do {
 				cout << "1. print report\n2. close\n";
 				choose = get_int_input("");
-				if (choose == 1)
-					print_course_report(courses, students);
+				if (choose == 1) {
+					for (size_t i = 0; i < courses.size(); i++) {
+						if (courses[i].id == id) {
+							cout << "course id " << id << endl;
+							cout << "course title " << courses[i].title << endl;
+							cout << "course hours " << courses[i].credit_hours << endl;
+							if (courses[i].grades.size() > 0) {
+								cout << "student id\tstudent name\tstudent grade\n";
+								for (size_t i = 0; i < courses.size(); i++) {
+									if (courses[i].id == id) {
+										for (size_t j = 0; j < courses[i].grades.size(); j++) {
+											for (size_t k = 0; k < students.size(); k++) {
+												if (students[k].id == courses[i].grades[j].first) {
+													cout << courses[i].grades[j].first << "\t" << students[k].name << "\t" << courses[i].grades[j].second << endl;
+												}
+											}
+										}
+									}
+								}
+							}
+							else
+								cout << "there is no grades yet!\n";
+						}
+					}
+				}
 				else if (choose == 2)
 					return nullptr;
 				else
@@ -91,8 +114,7 @@ Course* find_course_by_id(vector<Course>& courses, const string& id, vector<Stud
 			return &courses[i];
 		}
 	}
-	cout << "course not found\n";
-	cout << "do you want add course?\n";
+	cout << "course not found! do you want add course?\n";
 	do {
 		cout << "1. Add course\n2. close\n";
 		choose = get_int_input("");
@@ -167,7 +189,7 @@ void record_grade(vector<Course>& courses, vector<Student>& students)
 			}
 		}
 	}
-	cout << "Course not found\nadd it?\n";
+	cout << "Course not found! add it?\n";
 	cout << "1. Add course\n2. close\n";
 	int choose;
 	do {
@@ -200,16 +222,27 @@ void print_course_report(vector<Course>& courses, vector<Student>& students)
 	string course_id = get_string_input("Enter course id ");
 	cout << endl;
 	if (course_found(courses, course_id)) {
-		cout << "student id\tstudent name\tstudent grade\n";
 		for (size_t i = 0; i < courses.size(); i++) {
 			if (courses[i].id == course_id) {
-				for (size_t j = 0; j < courses[i].grades.size(); j++) {
-					for (size_t k = 0; k < students.size(); k++) {
-						if (students[k].id == courses[i].grades[j].first) {
-							cout << courses[i].grades[j].first << "\t" << students[k].name << "\t" << courses[i].grades[j].second << endl;
+				cout << "course id " << course_id << endl;
+				cout << "course title " << courses[i].title << endl;
+				cout << "course hours " << courses[i].credit_hours << endl;
+				if (courses[i].grades.size() > 0) {
+					cout << "student id\tstudent name\tstudent grade\n";
+					for (size_t i = 0; i < courses.size(); i++) {
+						if (courses[i].id == course_id) {
+							for (size_t j = 0; j < courses[i].grades.size(); j++) {
+								for (size_t k = 0; k < students.size(); k++) {
+									if (students[k].id == courses[i].grades[j].first) {
+										cout << courses[i].grades[j].first << "\t" << students[k].name << "\t" << courses[i].grades[j].second << endl;
+									}
+								}
+							}
 						}
 					}
 				}
+				else
+					cout << "there is no grades yet!\n";
 			}
 		}
 	}
