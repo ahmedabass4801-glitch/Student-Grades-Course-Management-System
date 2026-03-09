@@ -12,22 +12,21 @@ int main() {
     vector<Course> myCourses;
     load_database(myStudents, myCourses, "database.txt");
     int choice = 0;
-    while (choice != 14) {
+    while (choice != 13) {
         cout << "\n--- Academic Management System ---\n";
         cout << "1.  Add Student\n";
         cout << "2.  Add Course\n";
         cout << "3.  Record/Update Grade\n";
-        cout << "4.  Print Course Report\n";
+        cout << "4.  Print Course Report\n"; //
         cout << "5.  Print Student GPA\n";
         cout << "6.  Find Student By ID\n";
         cout << "7.  Find Course By ID\n";
-        cout << "8.  Record Grade\n";
-        cout << "9.  Print Course Report\n";
-        cout << "10. Edit Student Data\n";
-        cout << "11. Edit Course Data\n";
-        cout << "12. Delete Student\n";
-        cout << "13. Delete Course\n";
-        cout << "14. Save and Exit\n";
+        cout << "8.  Print Course Report\n"; 
+        cout << "9.  Edit Student Data\n";
+        cout << "10. Edit Course Data\n";
+        cout << "11. Delete Student\n";
+        cout << "12. Delete Course\n";
+        cout << "13. Save and Exit\n";
         cout << "Enter choice: ";
         choice = get_int_input("");
         switch (choice) {
@@ -46,13 +45,12 @@ int main() {
             find_course_by_id(myCourses, course_id, myStudents);
             break;
         }
-        case 8: record_grade(myCourses, myStudents); break;
-        case 9: print_course_report(myCourses, myStudents); break;
-        case 10: edit_student(myStudents); break;
-        case 11: edit_course(myCourses); break;
-        case 12: delete_student(myStudents); break;
-        case 13: delete_course(myCourses); break;
-        case 14: {
+        case 8: print_course_report(myCourses, myStudents); break;
+        case 9: edit_student(myStudents); break;
+        case 10: edit_course(myCourses); break;
+        case 11: delete_student(myStudents); break;
+        case 12: delete_course(myCourses); break;
+        case 13: {
             cout << "database : ";
             save_database(myStudents, myCourses, "database.txt");
             cout << "\nBackUp Data : ";
