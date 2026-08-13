@@ -17,7 +17,7 @@ int main() {
         cout << "1.  Add Student\n";
         cout << "2.  Add Course\n";
         cout << "3.  Record/Update Grade\n";
-        cout << "4.  Print Course Report\n"; //
+        cout << "4.  Print Course Report\n";
         cout << "5.  Print Student GPA\n";
         cout << "6.  Find Student By ID\n";
         cout << "7.  Find Course By ID\n";
@@ -30,14 +30,14 @@ int main() {
         cout << "Enter choice: ";
         choice = get_int_input("");
         switch (choice) {
-        case 1: add_student(myStudents); break;
+        case 1: add_student(myStudents, myCourses); break;
         case 2: add_course(myCourses); break;
         case 3: record_grade(myCourses, myStudents); break;
         case 4: print_course_report(myCourses, myStudents); break;
         case 5: print_Student_GPA(myStudents, myCourses); break;
         case 6: {
             string id = get_string_input("Enter Student ID ");
-            find_Student_By_Id(myStudents, id);
+            find_Student_By_Id(myStudents, id, myCourses);
             break;
         }
         case 7: {
