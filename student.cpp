@@ -19,7 +19,7 @@ bool student_found(vector<Student>& students, string id) {
 	}
 	return false;
 }
-void add_student(vector<Student>& students)
+void add_student(vector<Student>& students, vector<Course>& courses)
 {
 	Student temp;
 	string id = get_string_input("Enter student id ");
@@ -40,8 +40,14 @@ void add_student(vector<Student>& students)
 	cout << endl;
 	for (int i = 0; i < count; i++) {
 		string course = get_string_input("Add cousre id #" + to_string(i + 1) + " ");
-		temp.course_id.push_back(course);
-		cout << endl;
+		if (course_found(courses, course)){
+			temp.course_id.push_back(course);
+			cout << endl;
+		}
+		else {
+			cout << "course not found! try again\n";
+			return; 	
+		}
 	}
 	students.push_back(temp);
 	cout << "student added successfully! \n";
@@ -51,14 +57,14 @@ void add_student(vector<Student>& students)
 	do {
 		choose = get_int_input("");
 		if (choose == 1)
-			return add_student(students);
+			return add_student(students, courses);
 		else if (choose == 2)
 			return;
 		else
 			cout << "invalid choise! try again\n";
 	} while (choose != 1 && choose != 2);
 }
-Student* find_Student_By_Id(vector<Student>& students, const string& id)
+Student* find_Student_By_Id(vector<Student>& students, const string& id, vector<Course>& courses)
 {
 	int choose;
 	for (size_t i = 0; i < students.size(); i++) {
@@ -94,7 +100,7 @@ Student* find_Student_By_Id(vector<Student>& students, const string& id)
 		cout << "1. add student\n2. close\n";
 		choose = get_int_input("");
 		if (choose == 1) {
-			add_student(students);
+			add_student(students, courses);
 		}
 		else if (choose == 2) {
 			cout << "Thanks\n";
