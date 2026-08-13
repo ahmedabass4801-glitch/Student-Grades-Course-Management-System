@@ -18,3 +18,4 @@ void record_grade(vector<Course>& courses, vector<Student>& students);
 void print_course_report(vector<Course>& courses, vector<Student>& students);
 void edit_course(std::vector<Course>& courses);
 void delete_course(std::vector<Course>& courses);
+bool course_found(vector<Course>& courses, string id);
