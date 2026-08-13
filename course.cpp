@@ -178,7 +178,7 @@ void record_grade(vector<Course>& courses, vector<Student>& students)
 					cout << "\n1. add student\n2. close\n";
 					choose = get_int_input("");
 					if (choose == 1) {
-						add_student(students);
+						add_student(students, courses);
 						return;
 					}
 					else if (choose == 2)
