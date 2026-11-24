@@ -10,7 +10,7 @@ using namespace std;
 int main() {
     vector<Student> myStudents;
     vector<Course> myCourses;
-    load_database(myStudents, myCourses, "database.txt");
+    load_database(myStudents, myCourses, "data/database.txt");
     int choice = 0;
     while (choice != 13) {
         cout << "\n--- Academic Management System ---\n";
@@ -52,9 +52,9 @@ int main() {
         case 12: delete_course(myCourses); break;
         case 13: {
             cout << "database : ";
-            save_database(myStudents, myCourses, "database.txt");
+            save_database(myStudents, myCourses, "data/database.txt");
             cout << "\nBackUp Data : ";
-            save_database(myStudents, myCourses, "BackUp Data.txt");
+            save_database(myStudents, myCourses, "data/backup.txt");
             cout << "\nData saved. Thanks!\n";
             break;
         }
